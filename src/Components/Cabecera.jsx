@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 
 export default class Cabecera extends Component {
-  //   const inline ={
-  //     header ={
-  //       display: "inline"
-  //     }
-
-  // }
-
   render() {
     return (
       <header>

@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 
 export default class Lista extends Component {
+  handleClick = (id) => (e) => {
+    const { handleClick } = this.props;
+    handleClick(id);
+  };
+
+  //another way to HandleClick:
+  // handleClick = e => {
+  //   console.log(e.target.getAttribute('data-id'))
+  // }
+  //<button data-id={x.id} onClick={handleClick}
+
   render() {
+    const { data } = this.props;
     return (
       <div>
         <ul>
-          <li>
-            user 1 <button>Edit</button>{" "}
-          </li>
-          <li>
-            user 2 <button>Edit</button>{" "}
-          </li>
+          {data.map((x) => (
+            <li key={x.id}>
+              {x.name} <button onClick={this.handleClick(x.id)}>Edit</button>{" "}
+            </li>
+          ))}
         </ul>
       </div>
     );

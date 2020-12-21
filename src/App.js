@@ -15,12 +15,22 @@ class App extends Component {
       .get("https://jsonplaceholder.typicode.com/users")
       .then(({ data }) => this.setState({ data }));
   }
+
+  selectUsers = (id) => {
+    this.setState({
+      ruta: "formulario",
+      usuarioSeleccionado: id,
+    });
+  };
+
   render() {
     console.log(this.state.data);
-    const { ruta } = this.state;
+    const { ruta, data } = this.state;
     return (
       <div className="App">
-        {ruta === "lista" && <ViewList />}
+        {ruta === "lista" && (
+          <ViewList data={data} handleClick={this.selectUsers} />
+        )}
         {ruta === "formulario" && <UserForm />}
       </div>
     );
